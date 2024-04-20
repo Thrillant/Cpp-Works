@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+class Employee
+{
+    int age, id;
+    char name[100];
+
+public:
+    void get(); // member function declaration
+    void display();
+}; // class end
+void Employee::get()
+{
+
+    cout << "Enter name, id and age: " << endl;
+    cin.sync();
+    cin.getline(name, 100); // 1 byte
+    cin >> id >> age;       // 2 bytes
+}
+void Employee::display()
+{
+    cout << "Name \t ID \t Age" << endl;
+    cout << name << "\t" << id << "\t" << age << endl;
+}
+int main()
+{
+    int n, i;
+    cout << "Enter no. of Employees:" << endl;
+    cin >> n;
+    Employee e[n]; // ARRAY OF OBJECTS  e[0]   e[1]  e[2]  ....
+    cout << "Enter " << n << " employee details: " << endl;
+    for (i = 0; i < n; i++)
+    {
+        e[i].get(); // calling member function
+    }
+    cout << "EMPLOYEE DATABASE: " << endl;
+    for (i = 0; i < n; i++)
+    {
+        e[i].display(); // calling member function
+    }
+    return 0;
+}
