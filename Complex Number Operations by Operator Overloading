@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+class complex
+{
+    int R, I;
+
+public:
+    void read();
+    void display();
+    complex operator+(complex);
+    complex operator-(complex);
+    complex operator*(complex);
+    complex operator/(complex);
+};
+void complex::read()
+{
+    cout << "Enter Real and Imaginary part of no." << endl;
+    cin >> R >> I;
+}
+void complex::display()
+{
+    if (I < 0)
+        cout << R << "" << I << "i" << endl;
+    else
+        cout << R << "+" << I << "i" << endl;
+}
+complex complex::operator+(complex c)
+{
+    complex sum;
+    sum.R = R + c.R;
+    sum.I = I + c.I;
+    return sum;
+}
+complex complex::operator-(complex c)
+{
+    complex dif;
+    dif.R = R - c.R;
+    dif.I = I - c.I;
+    return dif;
+}
+complex complex::operator*(complex c)
+{
+    complex mul;
+    mul.R = R * c.R - I * c.I;
+    mul.I = R * c.I + I * c.R;
+    return mul;
+}
+complex complex::operator/(complex c)
+{
+    complex div;
+    double den = c.R * c.R + c.I * c.I;
+    div.R = (R * c.R + I * c.I) / den;
+    div.I = (I * c.R - R * c.I) / den;
+    return div;
+}
+int main()
+{
+    complex c1, c2, c3;
+    c1.read();
+    c2.read();
+    cout << "Entered nos. " << endl;
+    c1.display();
+    c2.display();
+    c3 = c1 + c2;
+    cout << "sum is " << endl;
+    c3.display();
+    c3 = c1 - c2;
+    cout << "Difference is " << endl;
+    c3.display();
+    c3 = c1 * c2;
+    cout << "Product is " << endl;
+    c3.display();
+    c3 = c1 / c2;
+    cout << "Quotient is " << endl;
+    c3.display();
+    return 0;
+}
