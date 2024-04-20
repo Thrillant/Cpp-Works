@@ -1,0 +1,48 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+class rect
+{
+    int l, b;
+
+public:
+    void read()
+    {
+        cout << "Enter Length and Breadth :" << endl;
+        cin >> l >> b;
+    }
+    void display()
+    {
+        cout << "The Length : " << l << endl
+             << "The Breadth : " << b << endl;
+    }
+    rect operator+(rect); // declaration
+    rect operator-(rect); // sum(int)
+};
+rect rect ::operator+(rect r2) // r1 is being passed as parameter
+{
+    rect r;
+    r.l = l + r2.l; // r1.l + r2.l
+    r.b = b + r2.b;
+    return (r);
+}
+rect rect ::operator-(rect r2)
+{
+    rect r;
+    r.l = l - r2.l;
+    r.b = b - r2.b;
+    return (r);
+}
+int main()
+{
+    rect r1, r2, ans;
+    r1.read();
+    r2.read();
+    ans = r1 + r2; // calling
+    cout << "Sum is: " << endl;
+    ans.display();
+    ans = r1 - r2; // r1 - r2
+    cout << "Difference is: " << endl;
+    ans.display();
+    return 0;
+}
