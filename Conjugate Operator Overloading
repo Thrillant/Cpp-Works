@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+class complex
+{
+    int R, I;
+
+public:
+    void read();
+    void display();
+    complex operator!(); // operator overloading function
+};
+void complex::read()
+{
+    cout << "Enter Real and Imaginary part of no. :" << endl;
+    cin >> R >> I;
+}
+void complex::display()
+{
+    if (I < 0)
+        cout << R << "" << I << "i" << endl;
+    else
+        cout << R << "+" << I << "i" << endl;
+}
+complex complex::operator!()
+{
+    complex c; // temporary object
+    c.I = -I;  // here I is c1.I
+    c.R = R;   // here R is c1.R
+    return c;  // final conjugate is being returned
+}
+int main()
+{
+    complex c1;
+    c1.read();
+    complex c2 = !c1; // calling of operator overloading function
+    cout << "Conjugate is: " << endl;
+    c2.display();
+    return 0;
+}
