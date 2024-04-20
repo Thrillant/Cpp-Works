@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+class student
+{
+protected:
+    char name[100];
+    int roll;
+
+public:
+    void get()
+    {
+        cout << "Enter the Name and Roll No :" << endl;
+        cin >> name >> roll;
+    }
+};
+class marks : public student
+{
+public:
+    int marks[3];
+    void get()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            cout << "Enter the Marks in Subject " << i + 1 << " : ";
+            cin >> marks[i];
+        }
+    }
+};
+class sports
+{
+public:
+    int marks_sports;
+    void get()
+    {
+        cout << "Enter the marks in Sports(If not available then Enter '0') : ";
+        cin >> marks_sports;
+    }
+};
+class result : public marks, public sports
+{
+public:
+    void display()
+    {
+        cout << "Name : " << name << endl
+             << "Roll : " << roll << endl;
+        for (int i = 0; i < 3; i++)
+        {
+            cout << "Marks in Subject " << i + 1 << " is : " << marks[i] << endl;
+        }
+        if (marks_sports != 0)
+            cout << "Marks in Sports : " << marks_sports << endl;
+    }
+};
+int main()
+{
+    int n;
+    cout << "Enter the Number of Students : ";
+    cin >> n;
+    result s[n];
+    cout << "Enter the Details :" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << "For Student " << i + 1 << endl;
+        s[i].student::get();
+        s[i].marks::get();
+        s[i].sports::get();
+    }
+    cout << endl
+         << endl
+         << "Displaying the Details :" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        s[i].display();
+    }
+    return 0;
+}
