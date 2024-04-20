@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+class Doctor
+{
+protected:
+    string name_d; // char name_d[100];
+    int age_d;
+
+public:
+    void get_d()
+    {
+        cout << "Enter Doctor's name and age: " << endl;
+        cin >> name_d >> age_d;
+    }
+    void display()
+    {
+        cout << "Doctor's Details: " << endl;
+        cout << name_d << " " << age_d << endl;
+    }
+};
+class Engineer
+{
+protected:
+    string name_e;
+    int age_e;
+
+public:
+    void get_e()
+    {
+        cout << "Enter Engineer's name and age: " << endl;
+        cin >> name_e >> age_e;
+    }
+    void display()
+    {
+        cout << "Engineer's Details: " << endl;
+        cout << name_e << " " << age_e << endl;
+    }
+};
+class Teacher
+{
+protected:
+    string name_t;
+    int age_t;
+
+public:
+    void get_t()
+    {
+        cout << "Enter Teacher's name and age: " << endl;
+        cin >> name_t >> age_t;
+    }
+    void display()
+    {
+        cout << "Teacher's Details: " << endl;
+        cout << name_t << " " << age_t << endl;
+    }
+};
+class Database : public Doctor, public Engineer, public Teacher
+{
+public:
+    void display()
+    {
+        cout << "ALL DETAILS: " << endl;
+        cout << "Names " << name_d << " " << name_e << " " << name_t << endl;
+        cout << "Ages: " << age_d << " " << age_e << " " << age_t << endl;
+    }
+};
+int main()
+{
+    Database db;
+    db.get_d(); // doctor
+    db.get_e(); // engineer
+    db.get_t(); // teacher
+    db.Doctor::display();
+    db.Engineer::display();
+    db.Teacher::display();
+    db.display(); // Database
+}
